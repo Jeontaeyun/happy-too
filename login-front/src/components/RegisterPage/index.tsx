@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
-const RegisterPage = () => {
+const RegisterPage = (props) => {
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const handledonChangeUserId = useCallback((e) => {
@@ -10,10 +10,13 @@ const RegisterPage = () => {
   const handledonChangeUserPassword = useCallback((e) => {
     setUserPassword(e);
   }, []);
-  const onPressRegister = useCallback((e)=>{},[]);
+  const onPressRegister = useCallback((e)=>{
+
+    return props.navigation.navigate('Home');
+  },[]);
 
   return (
-    <View style={styles.container}>
+    <View style = {styles.container}>
       <View style ={{flex:1, flexDirection: "column-reverse", margin: 20}}>
       <Text style= {{fontSize: 20}}>Register</Text>
       </View>

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { useSelector, useDispatch} from 'react-redux';
 import { LOG_IN_REQUEST } from '../../reducers';
 
-const LoginComponent = () => {
+const LoginComponent = (props) => {
   const dispatch = useDispatch();
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
@@ -14,16 +14,17 @@ const LoginComponent = () => {
     setUserPassword(e);
   }, []);
   const onPressSubmit = useCallback((e)=>{
-    dispatch({
-      type: LOG_IN_REQUEST,
-      data: {
-        userId, userPassword
-      }
-    })
+    // dispatch({
+    //   type: LOG_IN_REQUEST,
+    //   data: {
+    //     userId, userPassword
+    //   }
+    // });
+    return props.navigation.navigate('Home');
   },[userId, userPassword]);
   
   return (
-    <View style={styles.container}>
+    <View style = {styles.container}>
       <Text>Login</Text>
       <View style = {{flexDirection: "column", alignContent: "flex-start"}}>
         <View style ={styles.form}><Text style={{flex:1}}>Id</Text><TextInput style={{flex:3}} onChangeText={handledonChangeUserId} value ={userId} maxLength={12} placeholder="Please, Give me your Id" /></View>

@@ -16,6 +16,7 @@
     "react-native-gesture-handler": "^1.3.0",
     "react-native-navigation": "^2.26.1",
     "react-native-web": "^0.11.4",
+    "react-navigation": "^3.11.1",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
     "redux-saga": "^1.0.5"
