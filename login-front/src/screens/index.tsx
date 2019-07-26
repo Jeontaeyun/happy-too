@@ -1,5 +1,4 @@
-import React from './node_modules/react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 import {createAppContainer, createStackNavigator} from 'react-navigation';
 import MainPage from '../components/MainPage';
 import LoginComponent from '../components/LoginComponent';

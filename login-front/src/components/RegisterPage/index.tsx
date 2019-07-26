@@ -1,7 +1,9 @@
 import React, {useCallback, useState} from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button , ActivityIndicator} from 'react-native';
+import {useSelector} from 'react-redux';
 
 const RegisterPage = (props) => {
+  const {isSigningUp} = useSelector(state=>state);
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const handledonChangeUserId = useCallback((e) => {
@@ -17,14 +19,15 @@ const RegisterPage = (props) => {
 
   return (
     <View style = {styles.container}>
-      <View style ={{flex:1, flexDirection: "column-reverse", margin: 20}}>
+      {isSigningUp? <ActivityIndicator size="large" color="red"/> : <><View style ={{flex:1, flexDirection: "column-reverse", margin: 20}}>
       <Text style= {{fontSize: 20}}>Register</Text>
       </View>
       <View style = {{flex:1, flexDirection: "column", alignContent: "flex-start"}}>
         <View style ={styles.form}><Text style={{flex:1}}>Id</Text><TextInput style={{flex:3}} onChangeText={handledonChangeUserId} value ={userId} maxLength={12} placeholder="Please, Give me your Id" /></View>
         <View style ={styles.form}><Text style={{flex:1}}>Password</Text><TextInput secureTextEntry={true} style={{flex:3}} onChangeText={handledonChangeUserPassword} maxLength={15} textContentType = "password"  placeholder= "Please, Give me your Password" autoCompleteType = "password" value ={userPassword} /></View>
         <Button title="Register" onPress={onPressRegister}/>
-      </View>
+      </View></>}
+      
     </View>
   );
 }

@@ -7,7 +7,9 @@ export const initialState = {
     signedUp: false,                // 회원가입 성공
     isSigningUp: false,             // 회원가입 시도 중
     signUpErrorReason: '',          // 회원가입 실패 사유
-    me: null                       // 내 정보
+    me: {
+        userId: "Stark Jeon"
+    }                       // 내 정보
 };
 // React에서 setState의 부분
 // Redux에서 Action 부분 = State를 바꾸는 행위
