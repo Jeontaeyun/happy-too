@@ -12,3 +12,36 @@
 
 ### (03) 프로젝트 아키텍쳐
 
+#### 01) 백엔드 아키텍쳐
+
+- Language : Node.js 
+- Server Framework : Express
+- DataBase : MySQL , Sequelize(ORM)
+- Authentication : Passport.js
+- Etc : cookie-parser, body-parser, express-session
+
+#### 02) 프론트엔드 아키텍쳐
+
+- Language : TypeScript
+- Frame Work : React Native
+- State Management : Redux, Redux-Saga
+- CSS Framework : 
+- Modules Bundler : Webpack 4
+- Package Manager : yarn
+
+## 02. 프로젝트 이론
+
+### (01) 리액트 네이티브 | React Native
+
+```bash 
+npm i -g expo-cli 
+expo init $ProjectName
+```
+
+위의 명령어를 통해서 React Native 프로젝트를 생성할 수 있다. 이때 타입스크립트의 사용 여부를 지정해 초기 프로젝트의 설정을 조작할 수 있다.
+
+#### 01) React Navigation
+
+- ``` npm i react-navigation ```와 ``` yarn add react-native-gesture-handler
+
+### (02)
