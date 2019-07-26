@@ -36,7 +36,6 @@ function* loginAPI(loginData){
 }
 function* login(action){
     try{
-        yield delay(2000);
         /*yield call | 동기적 함수 호출 loginAPI함수가 모두 실행된 후 다음 명령어 실행*/
         const result = yield call(loginAPI, action.data);
         const data = yield result.then(async (result)=>{

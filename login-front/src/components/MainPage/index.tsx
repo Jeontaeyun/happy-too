@@ -1,13 +1,19 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import { LOG_OUT_REQUEST } from '../../reducers';
 
 const MainPage = (props) => {
+    const dispatch = useDispatch();
     const {isLogined, me} = useSelector(state=>state);
     const onPressLogin = useCallback((e) => {
       return props.navigation.push('Login');
     },[])
-    const onPressLogout = useCallback((e) => {},[])
+    const onPressLogout = useCallback((e) => {
+        dispatch({
+          type: LOG_OUT_REQUEST
+        })
+    },[])
     const onPressRegister = useCallback((e) => {
       return props.navigation.push('Register');
     },[])

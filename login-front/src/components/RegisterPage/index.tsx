@@ -1,9 +1,12 @@
 import React, {useCallback, useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Button , ActivityIndicator} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import { SIGN_UP_REQUEST } from '../../reducers';
 
 const RegisterPage = (props) => {
-  const {isSigningUp} = useSelector(state=>state);
+  
+  const dispatch = useDispatch();
+  const {isSigningUp, signedUp} = useSelector(state=>state);
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const handledonChangeUserId = useCallback((e) => {
@@ -13,8 +16,15 @@ const RegisterPage = (props) => {
     setUserPassword(e);
   }, []);
   const onPressRegister = useCallback((e)=>{
-
-    return props.navigation.navigate('Home');
+    dispatch({
+      type: SIGN_UP_REQUEST,
+      data : {
+        userId, userPassword
+      }
+    })
+    if(signedUp){
+      return props.navigation.navigate('Home');
+    }
   },[]);
 
   return (

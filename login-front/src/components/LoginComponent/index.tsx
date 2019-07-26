@@ -5,7 +5,7 @@ import { LOG_IN_REQUEST } from '../../reducers';
 
 const LoginComponent = (props) => {
   const dispatch = useDispatch();
-  const {isLoggingIn} = useSelector(state => state);
+  const {isLogined,isLoggingIn} = useSelector(state => state);
   const [userId, setUserId] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const handledonChangeUserId = useCallback((e) => {
@@ -21,7 +21,9 @@ const LoginComponent = (props) => {
         userId, userPassword
       }
     });
-    props.navigation.navigate('Home');
+    if(isLogined){
+      return props.navigation.navigate('Home');
+    }
   },[userId, userPassword]);
   
   return (

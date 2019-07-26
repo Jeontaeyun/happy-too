@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
-import reducers from './src/reducers';
+import reducers, { LOAD_USER_REQUEST } from './src/reducers';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './src/sagas';
 import AppContainer  from './src/screens';
