@@ -21,12 +21,13 @@ const RegisterPage = (props) => {
       data : {
         userId, userPassword
       }
-    })
-    if(signedUp){
-      return props.navigation.navigate('Home');
-    }
-  },[]);
-
+    });
+  },[userId, userPassword]);
+  // Hooks is save there first State, So if you want to change EventListener
+  // You got to fill [] area with Variable
+  if(signedUp){
+    return props.navigation.navigate('Home');
+  }
   return (
     <View style = {styles.container}>
       {isSigningUp? <ActivityIndicator size="large" color="red"/> : <><View style ={{flex:1, flexDirection: "column-reverse", margin: 20}}>

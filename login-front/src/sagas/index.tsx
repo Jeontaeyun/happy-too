@@ -82,38 +82,11 @@ function* signup(action){
 function* watchSignUp(){
     yield takeLatest(SIGN_UP_REQUEST, signup);
 }
-/*LOAD_USER*/
-function* laodUserAPI(){
-    return axios.get('/user', {
-        withCredentials: true
-    });
-}
-function* loaduser(){
-    try{
-        const result = yield call(laodUserAPI);
-        const data = yield result.then( async (result)=>{
-            return await result.data;
-        }); 
-        yield put ({
-            type: LOAD_USER_SUCCESS,
-            data
-        });
-    }
-    catch(e){
-        console.log(e)
-        yield put ({
-            type: LOAD_USER_FAILURE
-        });
-    }
-}
-function* watchLoadUser(){
-    yield takeEvery(LOAD_USER_REQUEST,loaduser);
-}
+
 export default function* userSaga(){
     yield all([
         fork(watchLogin),
         fork(watchLogout),
-        fork(watchLoadUser),
         fork(watchSignUp)
     ]);
 }

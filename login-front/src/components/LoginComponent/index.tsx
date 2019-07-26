@@ -21,11 +21,10 @@ const LoginComponent = (props) => {
         userId, userPassword
       }
     });
-    if(isLogined){
-      return props.navigation.navigate('Home');
-    }
   },[userId, userPassword]);
-  
+  if(isLogined){
+    return props.navigation.navigate('Home');
+  }
   return (
     <View style = {styles.container}>
       {isLoggingIn? <ActivityIndicator size="large" color="red"/> : <><Text>Login</Text>
