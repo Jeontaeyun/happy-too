@@ -1,4 +1,4 @@
-import {all, fork, takeLatest,takeEvery, put, call, delay} from 'redux-saga/effects';
+import {all, fork, takeLatest,takeEvery, put, call} from 'redux-saga/effects';
 import {LOG_IN_FAILURE, LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_OUT_FAILURE, LOG_OUT_REQUEST, LOG_OUT_SUCCESS, LOAD_USER_FAILURE, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, SIGN_UP_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS} from '../reducers';
 import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:8080/api';           // Axios에서 제공하는 공통된 URL 설정 방법

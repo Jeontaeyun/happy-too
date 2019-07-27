@@ -1,18 +1,18 @@
-# Happy Too Login Task - Front
+# Happy Too Login Task |  FRONTEND
 
-## 01. 리액트 네이티브
+## 01. React Native
 
-### (01) 리액트 네이티브란?
+### (01) What is the React Native
 
-- React를 기반으로 웹 컴포넌트 대신에 네이티브 컴포넌트를 사용하여 IOS, 안드로이드 등에서 사용될 수 있는 모바일 어플리케이션을 제작하도록 도와주는 프레임워크이다.
+- The react native is a framework making easy to develope mobile application running on IOS, Android. 
 
-- JSX, state, props, Component 등 대부분의 React 컨셉을 사용할 수 있으며, 안드로이드와 IOS에서 제공하는 네이티브 컴포넌트를 사용한다는 점에서 차별점을 둔다.
+- The react native can use most of react concept such as JSX, state, props, Component. **But it's supposed to use native component which is provided from IOS, Android**, not web component.
 
-- ``` sudo npm i -g expo-cli ``` 를 통해서 Expo를 설치한다.
+- ``` sudo npm i -g expo-cli ```  for installing expo environment
 
-- ``` expo init $projectName ``` 을 통해서 리액트 네이티브 프로젝트를 생성한다.
+- ``` expo init $projectName ``` for creating react-native project 
 
-### (02) 리액트 네이티브 기본 문법
+### (02) How to use
 
 ```javascript
 
@@ -31,5 +31,70 @@ export default class HelloWorldApp extends Component {
 
 ```
 
-와 같이 리액트의 문법을 따르지만, 리액트 네이티브 라이브러리의 컴포넌트를 따로 사용해야 한다.
+this use react grammer like JSX, props, state, but we got to use the native component
 
+## 02. React Native Navigationn
+
+### (01) What is the React Native Navigation
+
+- For navigating, like router in web , we have to use navigate library like react-native-navigation. And It can help to change sceens with button. 
+
+- ``` npm i --save react-native-navigation ``` for installing 
+
+
+### (02) How to use
+
+```javascript
+
+import React from 'react';
+import {createAppContainer, createStackNavigator} from 'react-navigation';
+import MainPage from '../components/MainPage';
+import LoginComponent from '../components/LoginComponent';
+import RegisterPage from '../components/RegisterPage';
+
+const AppNavigator = createStackNavigator(
+{
+  Home: MainPage,
+  Login: LoginComponent,
+  Register: RegisterPage
+},
+{
+  initialRouteName : "Home"
+})
+
+const AppConatiner = createAppContainer(AppNavigator);
+
+export default AppConatiner;
+
+
+```
+
+- We can use **createAppContainer**, **createStackNavigator** to use navigation. Also we can set initial screens with "initialRouteName" option.
+
+```javascript
+
+import React, {useEffect} from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import reducers, { LOAD_USER_REQUEST } from './src/reducers';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from './src/sagas';
+import AppContainer  from './src/screens';
+
+const App = () => {
+  const sagaMiddleware = createSagaMiddleware();
+  const store = createStore(reducers ,applyMiddleware(sagaMiddleware));
+  sagaMiddleware.run(rootSaga);
+  return (
+    <Provider store = {store}>
+        <AppContainer />
+    </Provider>
+  );
+}
+
+export default App;
+
+```
+
+- And we can use navigation as component like this. 
