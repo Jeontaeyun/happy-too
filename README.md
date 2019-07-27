@@ -1,47 +1,63 @@
 # HappyToo Resume Task 
 
-## 01. 프로젝트 개요
+## 01. PROJECT Intro
 
-### (01) 프로젝트 설명
+### (01) PROJECT Description
 
-해당 프로젝트는 HappyToo에서 일하기 위해 로그인 기능을 구현하기 위해서 진행되는 프로젝트입니다. 원래 프로젝트 파일을 구분해서 관리해야하지만 프로젝트의 규모가 크지 않아 서버측과 클라이언트측을 같은 파일에 보관하여 저장할 것 입니다.
+This project is for applying HappyToo which is run O2O delivery service.<br/>
+I had to manage separately directory in the first place, But our project isn't big enough to divide. So, I am going to manage our file in same repository
 
-### (02) 프로젝트 목적
+### (02) PROJECT Purpose
 
-해당 프로젝트에서는 대규모 어플리케이션 개발에 적합하다는 타입스크립트를 도입할 것입니다. 이를 통해서 HappyToo에서 일하게 될 경우 구현해야하는 Restaurant App을 구현할 때 필요할 것으로 예상되는 타입스크립트를 익혀둘 것 입니다.
+ I'm going to use TypeScript which is useful to develope a large scale application. Because Our next project is focusing on a stability. It is helpful when we are developing restaurant dashboard which is more likely to be extended. That's the reason why I'm use Typescript
 
-### (03) 프로젝트 아키텍쳐
+### (03) PROJECT Architecture
 
-#### 01) 백엔드 아키텍쳐
+#### 01) BACKEND Architecture
 
 - Language : Node.js 
 - Server Framework : Express
-- DataBase : MySQL , Sequelize(ORM)
+- DataBase : MongoDB , Mongoose(ODM)
 - Authentication : Passport.js
-- Etc : cookie-parser, body-parser, express-session
+- HTTP Log : morgan.js
+- Environment Value : dotenv
+- Cookie and Session : cookie-parser, express-session
 
-#### 02) 프론트엔드 아키텍쳐
+#### 02) FRONTEND Architecture
 
 - Language : TypeScript
-- Frame Work : React Native
+- Frame Work : React Native, React-native-navigation
 - State Management : Redux, Redux-Saga
-- CSS Framework : 
 - Modules Bundler : Webpack 4
-- Package Manager : yarn
+- Package Manager : npm
 
-## 02. 프로젝트 이론
+## 02. PROJECT Scehedule
 
-### (01) 리액트 네이티브 | React Native
+- [x] Studying about the react native
+- [x] Making screens with login component
+- [x] Making navigation with react-native-navigation
+- [x] Making redux state and actions
+- [x] Making redux-saga pattern 
+- [x] Making express server with Node.js
+- [x] Connecting with MongoDB, Mongoose
+- [x] Setting passport for Authentication
+- [x] Making Login API
+- [x] At front connecting axios http communication
+- [x] Testing
+- [x] Writing README.md
 
-```bash 
-npm i -g expo-cli 
-expo init $ProjectName
-```
+## 03. PROJECT Contemplation
 
-위의 명령어를 통해서 React Native 프로젝트를 생성할 수 있다. 이때 타입스크립트의 사용 여부를 지정해 초기 프로젝트의 설정을 조작할 수 있다.
+### (01) Using React Native
 
-#### 01) React Navigation
+ It's my first time to use react-native. So, It's a little bit awesome to make mobile application. And I notice that I use react-native-nvigation for routing (In this case, it called Navigation). And at react-native, we got to use Native Component like < View >, < Text />. So we need to study about native component.
 
-- ``` npm i react-navigation ```와 ``` yarn add react-native-gesture-handler
+ - For routing at react-native, We got to use navigation library like react-native-navigation
 
-### (02)
+ - For using react, We need to study about the Native Component
+
+### (02) Reviewing about login process
+
+I reviewed about login process with Node.js, Express.js, Passport.js. I think the Passporrt.js is super awesome library for the authentication. it have many Authentication strategy and it is really powerful. Of course, I am going to learn about vanilla login process and Federated Identity, but it's really good to use. Let's remember, Don't need to make wheels.
+
+> **Federated Identity** <br/> a Kind of Authentication Strategy like Google Login, Facebook Login

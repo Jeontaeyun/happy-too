@@ -17,7 +17,7 @@ function* logout(){
         });
     }
     catch(e){
-        console.log(e)
+        console.log(e);
         yield put ({
             type: LOG_OUT_FAILURE
         });
