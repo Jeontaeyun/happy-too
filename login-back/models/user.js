@@ -1,8 +1,18 @@
 const mongoose = require('mongoose');
 
 const {Schema} = mongoose;
+/*
+The reason why I'm use mongoDB
 
-/*스키마 생성 함수*/
+01. I use mac and it have MYSQL. but I use bitnami for using mysql. so If I use MYSQL, I need to some authentication with my finger.
+
+02. But it is very small project, so I decide to use mongoDB, it is really useful at small project
+
+03. But I can use MySQL and ORM(Object-Relation-Mapping)
+
+*/
+
+/*Schema Function*/
 const User = new Schema({
     userId : String,
     userPassword : String,
@@ -12,9 +22,9 @@ const User = new Schema({
     }
 });
 
-/*모델 생성 함수*/
+/*Making module for database modeling*/
 module.exports = mongoose.model('User', User);
 /*
-mongoose.model('스키마 이름','스키마 객체')
-데이터베이스는 스키마 이름을 정해주면 이 이름의 복수 형태로 데이터베이스에 컬렉션 이름을 만듭니다.
+mongoose.model('SchemaName','SchemaObject')
+MongoDB make collection named SchemaNames which is the plural form
 */

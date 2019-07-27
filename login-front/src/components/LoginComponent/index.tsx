@@ -4,6 +4,7 @@ import { useSelector, useDispatch} from 'react-redux';
 import { LOG_IN_REQUEST } from '../../reducers';
 
 const LoginComponent = (props) => {
+  // This is React Hooks which is making state and lifecycle in functional component
   const dispatch = useDispatch();
   const {isLogined,isLoggingIn} = useSelector(state => state);
   const [userId, setUserId] = useState("");

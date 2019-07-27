@@ -32,6 +32,7 @@ export const SIGN_UP_FAILURE = 'SIGN_UP_FAILURE';
 //Redux reducer 
 export const reducer = (state= initialState, action) => {
     switch(action.type){
+        // It's like setState in react
         case LOG_IN_REQUEST: {
             return {
                 ...state,
@@ -59,14 +60,12 @@ export const reducer = (state= initialState, action) => {
             }
         };
         case LOG_OUT_REQUEST: {
-            //setState를 구현하는 부분
             return {
                 ...state,
                 isLoggingOut: true
             }
         };
         case LOG_OUT_SUCCESS: {
-            //setState를 구현하는 부분
             return {
                 ...state,
                 isLoggingOut: false,
@@ -75,7 +74,6 @@ export const reducer = (state= initialState, action) => {
             }
         };
         case LOG_OUT_FAILURE: {
-            //setState를 구현하는 부분
             return {
                 ...state,
                 isLoggingOut: false

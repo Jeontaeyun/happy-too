@@ -20,7 +20,7 @@ const MainPage = (props) => {
     return (
     <View style = {styles.container}>
       <View style = {{flex:1, flexDirection: "column", alignContent : "center",justifyContent: "flex-end"}}>
-          <Text>{isLogined? `${me.userId}님 반갑습니다.` : "Hi it's just Login Task for Happy Too"}</Text>
+          <Text>{isLogined? `Welcome ${me.userId} ` : "Hi it's just Login Task for Happy Too"}</Text>
       </View>
         <View style ={{flex:1, flexDirection: "row", justifyContent: "center"}}>
          {isLogined? <Button title = "Logout" onPress ={onPressLogout}></Button> : 

@@ -1,9 +1,9 @@
-/* passport의 strategy를 구현 */
+/*Setting Local Strategy*/
 const passport = require('passport');
 const {Strategy: LocalStrategy} = require('passport-local');
+// For security of management we got to use bcrypt
 const bcrypt = require('bcrypt-nodejs');
 const User =require('../models/user');
-
 
 module.exports = () =>{
     passport.use(new LocalStrategy({
