@@ -1,12 +1,19 @@
 import {all, fork, takeLatest,takeEvery, put, call} from 'redux-saga/effects';
 import {LOG_IN_FAILURE, LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_OUT_FAILURE, LOG_OUT_REQUEST, LOG_OUT_SUCCESS, LOAD_USER_FAILURE, LOAD_USER_REQUEST, LOAD_USER_SUCCESS, SIGN_UP_FAILURE, SIGN_UP_REQUEST, SIGN_UP_SUCCESS} from '../reducers';
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:8080/api';           // Axios에서 제공하는 공통된 URL 설정 방법
+// Setting base URL with axios property
+axios.defaults.baseURL = 'http://localhost:8080/api';        
+/*
+Saga Pattern
+01. watch Actions
+02. call API
+03. if API is Success then put Success actions. But other case pust Failure actions.
+*/
 /*LOG_OUT*/
 function* logoutAPI(){
     return axios.post('/user/logout',{},{
         withCredentials: true
-        // 다른 도메인에 Cookie를 보내기 위한 설정.
+        // withCredentials is option for transforming cookie
     });
 }
 function* logout(){
@@ -28,20 +35,18 @@ function* watchLogout(){
 }
 /*LOG_IN*/
 function* loginAPI(loginData){
-    // 서버에 loginRequest를 보내는 부분
     return axios.post('/user/login', loginData, {
         withCredentials: true
-        // 서버 측에서 Cookie를 받아오기 위한 Axios 설정 값.
     });
 }
 function* login(action){
     try{
-        /*yield call | 동기적 함수 호출 loginAPI함수가 모두 실행된 후 다음 명령어 실행*/
+        /*yield call | Synchronous Actions*/
         const result = yield call(loginAPI, action.data);
+        // result.data is promise, So, we got to async/await for resolving Promise
         const data = yield result.then(async (result)=>{
             return await result.data;
         });
-        // Promise객체를 async/await을 통해서 일반 객체로 변경해주는 것 개념 다시 이해하기.
         yield put ({
             type: LOG_IN_SUCCESS,
             data
@@ -60,7 +65,7 @@ function* watchLogin(){
 }
 /*SIGN_UP*/
 function* signupAPI(signUpData){
-    //서버에 signupRequest를 보내는 부분
+    
     return axios.post('/user', signUpData);
 }
 function* signup(action){
@@ -78,7 +83,6 @@ function* signup(action){
         })
     }
 }
-//SING_UP_REQUEST를 확인한 후
 function* watchSignUp(){
     yield takeLatest(SIGN_UP_REQUEST, signup);
 }
