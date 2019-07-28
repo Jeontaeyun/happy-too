@@ -1,6 +1,6 @@
 # Happy Too Login Task |  BACKEND
 
-## 01. About Architecture
+## 01. PROJECT Architecture
 
 ### (01) BACKEND Architecture
 
@@ -185,3 +185,12 @@ Function    |  Description
 --------    | -----------------------------------------------------------------------------------
 Serialize   | Save user's id and cookie at server-side
 Deserialize | Every the page reloading, the database save user info at req.user based on id saved at server-side
+
+## 02. PROJECT API
+
+METHOD |        PATH         | DESCRIPTION
+------ | --------------------| ----------------------------------------------------------
+POST   | /login              | Login API
+POST   | /logout             | Logout API
+
+- There is a question... Is login API designed on RESTful API? I am going to think a lot about this.
